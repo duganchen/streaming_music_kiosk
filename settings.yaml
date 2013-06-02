@@ -1,0 +1,4 @@
+connection:
+  host: localhost
+  port: 6600
+stream-url: http://localhost:8001

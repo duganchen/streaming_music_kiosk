@@ -72,10 +72,16 @@ def play_song():
     with mpd_client() as client:
         client.playid(flask.request.form['song'])
 
+    return flask.redirect('/stream')
+
+
+@app.route('/stream')
+def stream():
     with open('settings.yaml') as f:
         settings = yaml.load(f)
 
-    return flask.redirect(settings['stream-url'])
+    return flask.render_template('stream.html',
+                                 stream_url=settings['stream-url'])
 
 
 @contextlib.contextmanager

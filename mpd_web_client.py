@@ -15,7 +15,7 @@ def favicon():
 @app.route('/')
 def albums():
     with mpd_client() as client:
-        albums = sorted((urllib.quote(album), album)
+        albums = sorted((urllib.quote(album.encode('utf-8')), album)
                         for album in client.list('album'))
     return flask.render_template('albums.html', albums=albums)
 

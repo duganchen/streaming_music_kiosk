@@ -14,6 +14,7 @@ def favicon():
 
 @app.route('/')
 def albums():
+    print 'albums'
     with mpd_client() as client:
         albums = sorted((urllib.quote(album.encode('utf-8')), album)
                         for album in client.list('album'))
@@ -70,7 +71,17 @@ def choose_song_album():
 def play_song():
 
     with mpd_client() as client:
+        print 'playing {}'.format(flask.request.form['song'])
         client.playid(flask.request.form['song'])
+
+    return flask.redirect('/stream')
+
+
+@app.route('/stop', methods=['POST'])
+def stop():
+
+    with mpd_client() as client:
+        client.stop()
 
     return flask.redirect('/stream')
 

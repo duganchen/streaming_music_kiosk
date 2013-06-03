@@ -1,6 +1,7 @@
 import contextlib
 import flask
 import mpd
+import os
 import urllib
 import yaml
 
@@ -23,13 +24,24 @@ def albums():
 
 @app.route('/album/<album>')
 def album(album):
-    track_order = lambda song: (song['track'] if 'track' in song
-                                else song['title'].lower().strip())
+
     with mpd_client() as client:
         songs = client.find('album', urllib.unquote(album))
         sorted_songs = sorted(songs, key=track_order)
     return flask.render_template('album.html', album=album, songs=sorted_songs)
 
+
+def track_order(song):
+    if 'track' in song:
+        try:
+            return int(song['track'])
+        except ValueError:
+            return song['track']
+
+    if 'title' in song:
+        return song['title']
+
+    return os.path.basename(song['file'].lower())
 
 @app.route('/playlist')
 def playlist():

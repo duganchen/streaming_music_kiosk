@@ -8,7 +8,7 @@
 
 	<h1>{{ album }}</h1>
 
-	<form method="POST" action="/queue-album">
+	<form method="POST" action="{{ url_for('queue_album') }}">
 		{% for song in songs %}
 		<label class="checkbox">
 			<input type="checkbox" name="songs" value="{{ song.file }}" checked> {{ song.title }}

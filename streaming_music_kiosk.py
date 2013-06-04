@@ -61,7 +61,7 @@ def queue_album():
 
 
 @app.route('/remove-songs', methods=['POST'])
-def remove_album():
+def remove_songs():
 
     with mpd_client() as client:
         for song in flask.request.form.getlist('songs'):

@@ -27,18 +27,19 @@
 							<li{% if nav == "albums" %} class="active"{% endif %}><a href="{{ url_for('albums')}}">Albums</a></li>
 							<li{% if nav == "playlist" %} class="active"{% endif %}><a href="{{ url_for('playlist') }}">Current Playlist</a></li>
 							<li{% if nav == "stream" %} class="active"{% endif %}><a href="{{ url_for('stream') }}">Stream</a></li>
-					</ul>
-
-			</div><!--/.nav-collapse -->
+						</ul>
+					</div><!--/.nav-collapse -->
+				</div>
+			</div>
 		</div>
-      </div>
-    </div>
 
-	<div class="container">
-		{% block container %}{% endblock %}
-	</div>
+		<div class="container">
+			{% block container %}{% endblock %}
+		</div>
 
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
-	<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
-  </body>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
+		<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+
+		{% block javascript %}{% endblock %}
+	</body>
 </html>

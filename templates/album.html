@@ -7,14 +7,24 @@
 	</ul>
 
 	<h1>{{ album }}</h1>
+	<div class="btn-group">
+		<button class="btn" id="select-all">Select All</button>
+		<button class="btn" id="select-none">Select None</button>
+	</div>
 
 	<form method="POST" action="{{ url_for('queue_album') }}">
-		{% for song in songs %}
-		<label class="checkbox">
-			<input type="checkbox" name="songs" value="{{ song.file }}" checked> {{ song.title }}
-		</label>
-		{% endfor %}
-		<button type="submit" class="btn">Queue</button>
+		<fieldset>
+			{% for song in songs %}
+			<label class="checkbox">
+				<input type="checkbox" name="songs" value="{{ song.file }}" checked> {{ song.title }}
+			</label>
+			{% endfor %}
+			<button type="submit" class="btn">Queue</button>
+		</fieldset>
 	</form>
 
+{% endblock %}
+
+{% block javascript %}
+	<script src="{{ url_for('static', filename='selection.js') }}"></script>
 {% endblock %}

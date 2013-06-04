@@ -14,14 +14,25 @@
 
 	<h2>Edit Playlist</h2>
 
-	<form method="POST" action="{{ url_for('remove_songs') }}">
-		{% for song in songs %}
+	<div class="btn-group">
+		<button class="btn" id="select-all">Select All</button>
+		<button class="btn" id="select-none">Select None</button>
+	</div>
 
-		<label class="checkbox">
-			<input type="checkbox" name="songs" value="{{ song.id }}"> {{ song.title }}
-		</label>
-		{% endfor %}
-		<button type="submit" class="btn">Remove</button>
+	<form method="POST" action="{{ url_for('remove_songs') }}">
+		<fieldset>
+			{% for song in songs %}
+
+			<label class="checkbox">
+				<input type="checkbox" name="songs" value="{{ song.id }}"> {{ song.title }}
+			</label>
+			{% endfor %}
+			<button type="submit" class="btn">Remove</button>
+			</fieldset>
 	</form>
 
+{% endblock %}
+
+{% block javascript %}
+	<script src="{{ url_for('static', filename='selection.js')}}"></script>
 {% endblock %}

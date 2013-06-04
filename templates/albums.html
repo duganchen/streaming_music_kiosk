@@ -7,8 +7,8 @@
 
 	<h1>Albums</h1>
 	<ul class="nav nav-list">
-		{% for escaped, album in albums %}
-		<li><a href="/album/{{ escaped }}">{{album}}</a></li>
+		{% for album in albums %}
+		<li><a href="{{ url_for('album', album=album)}}">{{album}}</a></li>
 		{% endfor %}
 	</ul>
 {% endblock %}

@@ -19,8 +19,7 @@ def favicon():
 @app.route('/')
 def albums():
     with mpd_client() as client:
-        albums = sorted((urllib.quote(album.encode('utf-8')), album)
-                        for album in client.list('album'))
+        albums = sorted(client.list('album'))
     return flask.render_template('albums.html', albums=albums, nav="albums")
 
 
@@ -45,6 +44,7 @@ def track_order(song):
         return song['title']
 
     return os.path.basename(song['file'].lower())
+
 
 @app.route('/playlist')
 def playlist():

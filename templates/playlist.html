@@ -15,12 +15,13 @@
 	<h2>Edit Playlist</h2>
 
 	<form method="POST" action="/remove-songs">
-			{% for song in songs %}
-			<p><input type="checkbox" name="songs" value="{{ song.id }}"> {{ song.title }}</p>
-			{% endfor %}
-		<p>
+		{% for song in songs %}
+
+		<label class="checkbox">
+			<input type="checkbox" name="songs" value="{{ song.id }}"> {{ song.title }}
+		</label>
+		{% endfor %}
 		<button type="submit" class="btn">Remove</button>
-		</p>
 	</form>
 
 {% endblock %}

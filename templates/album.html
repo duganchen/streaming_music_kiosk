@@ -8,12 +8,13 @@
 
 	<h1>{{ album }}</h1>
 
-	<form action="/queue-album" method="POST">
+	<form method="POST" action="/queue-album">
 		{% for song in songs %}
-			<p><input type="checkbox" name="songs" value="{{ song.file }}" checked> {{ song.title }}</p>
+		<label class="checkbox">
+			<input type="checkbox" name="songs" value="{{ song.file }}" checked> {{ song.title }}
+		</label>
 		{% endfor %}
-		<p>
-		<button type="submit" class="btn">Queue</button>
-		</p>
+		<button type="submit" class="btn">Remove</button>
 	</form>
+
 {% endblock %}

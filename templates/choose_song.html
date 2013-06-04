@@ -10,12 +10,12 @@
 	<h1>Choose Song To Play At</h1>
 
 	<form method="POST" action="/play-song">
-			{% for song in songs %}
-			<p><input type="radio" name="song" value="{{ song.id }}" {% if loop.first %}checked{% endif %}> {{ song.title }}</p>
-			{% endfor %}
-		<p>
-		<button type="submit" class="btn">Play</button>
-		</p>
+		{% for song in songs %}
+		<label class="radio">
+			<input type="radio" name="song" value="{{ song.id }}" {% if loop.first %}checked{% endif %}> {{ song.title }}
+		</label>
+		{% endfor %}
+		<button type="submit" class="btn">Remove</button>
 	</form>
 
 {% endblock %}

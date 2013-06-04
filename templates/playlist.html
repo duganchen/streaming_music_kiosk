@@ -8,13 +8,13 @@
 
 	<h1>Current Playlist</h1>
 
-	<p><a href="/choose-song">Choose Song To Play At</a></p>
+	<p><a href="{{ url_for('choose_song') }}">Choose Song To Play At</a></p>
 
 	<hr>
 
 	<h2>Edit Playlist</h2>
 
-	<form method="POST" action="/remove-songs">
+	<form method="POST" action="{{ url_for('remove_songs') }}">
 		{% for song in songs %}
 
 		<label class="checkbox">

@@ -3,7 +3,7 @@
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta charset="utf-8">
-		<title>{{ album }}</title>
+		<title>Streaming Music Kiosk</title>
 		<style>
 			body {
 				padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */ }
@@ -24,9 +24,9 @@
 					<span class="brand">Streaming Music Kiosk</span>
 					<div class="nav-collapse collapse">
 						<ul class="nav">
-							<li{% if nav == "albums" %} class="active"{% endif %}><a href="/">Albums</a></li>
-							<li{% if nav == "playlist" %} class="active"{% endif %}><a href="/playlist">Current Playlist</a></li>
-							<li{% if nav == "stream" %} class="active"{% endif %}><a href="/stream">Stream</a></li>
+							<li{% if nav == "albums" %} class="active"{% endif %}><a href="{{ url_for('albums')}}">Albums</a></li>
+							<li{% if nav == "playlist" %} class="active"{% endif %}><a href="{{ url_for('playlist') }}">Current Playlist</a></li>
+							<li{% if nav == "stream" %} class="active"{% endif %}><a href="{{ url_for('stream') }}">Stream</a></li>
 					</ul>
 
 			</div><!--/.nav-collapse -->

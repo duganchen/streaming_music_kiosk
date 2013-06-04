@@ -2,7 +2,7 @@
 
 {% block container %}
 	<ul class="breadcrumb">
-		<li><a href="/">Albums</a> <span class="divider">/</span></li>
+		<li><a href="{{ url_for('albums') }}">Albums</a> <span class="divider">/</span></li>
 		<li class="active">{{ album }}</li>
 	</ul>
 

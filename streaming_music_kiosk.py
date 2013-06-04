@@ -74,7 +74,7 @@ def remove_songs():
 
 
 @app.route('/choose-song')
-def choose_song_album():
+def choose_song():
 
     with mpd_client() as client:
         songs = client.playlistinfo()

@@ -4,13 +4,13 @@
 
 	<ul class="breadcrumb">
 		<li><a href="/playlist">Current Playlist</a> <span class="divider">/</span></li>
-		<li><a href="/choose-song">Choose Song To Play</a></li>
+		<li><a href="/choose-song">Choose Song To Play At</a> <span class="divider">/</span></li>
 		<li class="active">Stream</li>
 	</ul>
 
 	<h1>Stream</h1>
 
-	<p><a href="{{ stream_url }}" target="_blank">Open Stream</a>
+	<p>Open Stream: <a href="{{ stream_url }}" target="_blank">{{ stream_url}}</a></p>
 
 	<form method="POST" action="/stop">
 		<p>

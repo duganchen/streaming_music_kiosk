@@ -1,58 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta charset="utf-8">
-		<title>{{ album }}</title>
-		<style>
-			body {
-				padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */ }
-		</style>
+{% extends "frame.html" %}
 
-		<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
-	</head>
+{% block container %}
+	<ul class="breadcrumb">
+		<li><a href="/">Albums</a> <span class="divider">/</span></li>
+		<li class="active">{{ album }}</li>
+	</ul>
 
-	<body>
-		<div class="navbar navbar-inverse navbar-fixed-top">
-			<div class="navbar-inner">
-				<div class="container">
-					<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<a class="brand" href="#">Project name</a>
-					<div class="nav-collapse collapse">
-						<ul class="nav">
-							<li class="active"><a href="#">Home</a></li>
-							<li><a href="#about">About</a></li>
-							<li><a href="#contact">Contact</a></li>
-					</ul>
-			</div><!--/.nav-collapse -->
-		</div>
-      </div>
-    </div>
+	<h1>{{ album }}</h1>
 
-	<div class="container">
-		<ul class="breadcrumb">
-			<li><a href="/">Albums</a> <span class="divider">/</span></li>
-			<li class="active">{{ album }}</li>
-		</ul>
-
-		<h1>{{ album }}</h1>
-
-		<form action="/queue-album" method="POST">
-			{% for song in songs %}
-				<p><input type="checkbox" name="songs" value="{{ song.file }}" checked> {{ song.title }}</p>
-			{% endfor %}
-			<p>
-			<button type="submit" class="btn">Queue</button>
-			</p>
-		</form>
-
-	</div>
-
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
-	<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
-  </body>
-</html>
+	<form action="/queue-album" method="POST">
+		{% for song in songs %}
+			<p><input type="checkbox" name="songs" value="{{ song.file }}" checked> {{ song.title }}</p>
+		{% endfor %}
+		<p>
+		<button type="submit" class="btn">Queue</button>
+		</p>
+	</form>
+{% endblock %}

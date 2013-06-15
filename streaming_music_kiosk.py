@@ -83,6 +83,26 @@ def choose_song():
                                  nav="playlist")
 
 
+@app.route('/edit_edit')
+def edit_playlist():
+
+    with mpd_client() as client:
+        songs = client.playlistinfo()
+
+    return flask.render_template('edit_playlist.html', songs=songs,
+                                 nav="playlist")
+
+
+@app.route('/save_playlist')
+def save_playlist():
+
+    with mpd_client() as client:
+        songs = client.playlistinfo()
+
+    return flask.render_template('save_playlist.html', songs=songs,
+                                 nav="playlist")
+
+
 @app.route('/play-song', methods=['POST'])
 def play_song():
 

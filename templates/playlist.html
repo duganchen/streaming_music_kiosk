@@ -3,33 +3,18 @@
 {% block container %}
 
 	<ul class="breadcrumb">
-		<li class="active">Current Playlist</li>
+		<li class="active">Playlist Operations</li>
 	</ul>
 
-	<h1>Current Playlist</h1>
+	<h1>Playlist Operations</h1>
 
-	<p><a href="{{ url_for('choose_song') }}">Choose Song To Play At</a></p>
-
-	<hr>
-
-	<h2>Edit Playlist</h2>
-
-	<div class="btn-group">
-		<button class="btn" id="select-all">Select All</button>
-		<button class="btn" id="select-none">Select None</button>
-	</div>
-
-	<form method="POST" action="{{ url_for('remove_songs') }}">
-		<fieldset>
-			{% for song in songs %}
-
-			<label class="checkbox">
-				<input type="checkbox" name="songs" value="{{ song.id }}"> {{ song.title }}
-			</label>
-			{% endfor %}
-			<button type="submit" class="btn">Remove</button>
-			</fieldset>
-	</form>
+	<ul class="nav nav-list">
+		<li class="nav-header">Playlist Operations</li>
+		<li class="active"><a>Choose Playlist Operation</a></li>
+		<li><a href="{{ url_for('edit_playlist')}}">Edit Playlist</a></li>
+		<li><a href="{{ url_for('choose_song') }}">Choose Song To Play At</a></li>
+		<li><a href="{{ url_for('save_playlist') }}">Save Playlist</a></li>
+	</ul>
 
 {% endblock %}
 

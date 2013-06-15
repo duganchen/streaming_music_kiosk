@@ -1,0 +1,33 @@
+{% extends "frame.html" %}
+
+{% block container %}
+
+	<ul class="breadcrumb">
+		<li><a href="{{ url_for('playlist') }}">Playlist Operations</a> <span class="divider">/</span></li>
+		<li class="active">Edit Playlist</li>
+	</ul>
+
+	<h2>Edit Playlist</h2>
+
+	<div class="btn-group">
+		<button class="btn" id="select-all">Select All</button>
+		<button class="btn" id="select-none">Select None</button>
+	</div>
+
+	<form method="POST" action="{{ url_for('remove_songs') }}">
+		<fieldset>
+			{% for song in songs %}
+
+			<label class="checkbox">
+				<input type="checkbox" name="songs" value="{{ song.id }}"> {{ song.title }}
+			</label>
+			{% endfor %}
+			<button type="submit" class="btn">Remove</button>
+			</fieldset>
+	</form>
+
+{% endblock %}
+
+{% block javascript %}
+	<script src="{{ url_for('static', filename='selection.js')}}"></script>
+{% endblock %}

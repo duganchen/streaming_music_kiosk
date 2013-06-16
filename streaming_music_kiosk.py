@@ -93,14 +93,28 @@ def edit_playlist():
                                  nav="playlist")
 
 
-@app.route('/save_playlist')
+@app.route('/save_playlist', methods=['GET', 'POST'])
 def save_playlist():
-
     with mpd_client() as client:
-        songs = client.playlistinfo()
+        if flask.request.method == 'GET':
+            songs = client.playlistinfo()
+            return flask.render_template('save_playlist.html', songs=songs,
+                                         nav="playlist")
 
-    return flask.render_template('save_playlist.html', songs=songs,
-                                 nav="playlist")
+        client.save(flask.request.form['playlist'])
+        return flask.redirect('/stored_playlists')
+
+
+@app.route('/stored_playlists')
+def stored_playlists():
+    with mpd_client() as client:
+        playlists = [playlist['playlist'] for playlist in
+                     client.listplaylists()]
+        return flask.render_template('stored_playlists.html',
+                                     playlists=playlists,
+                                     nav="stored_playlists")
+
+        return flask.redirect('/stored_playlists')
 
 
 @app.route('/play-song', methods=['POST'])

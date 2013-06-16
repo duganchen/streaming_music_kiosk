@@ -4,18 +4,26 @@
 
 	<ul class="breadcrumb">
 		<li><a href="{{ url_for('playlist')}}">Current Playlist</a> <span class="divider">/</span></li>
-		<li class="active">Choose Song To Play At</li>
+		<li class="active">Save Playlist</li>
 	</ul>
 
-	<h1>Choose Song To Play At</h1>
 
-	<form method="POST" action="{{ url_for('play_song') }}">
+	<h1>Save Playlist</h1>
+
+	<ol>
 		{% for song in songs %}
-		<label class="radio">
-			<input type="radio" name="song" value="{{ song.id }}" {% if loop.first %}checked{% endif %}> {{ song.title }}
-		</label>
+		<li>{{ song.title }}</li>
 		{% endfor %}
-		<button type="submit" class="btn">Play At Selected Song</button>
+
+	</ol>
+
+	<form method="POST" action="{{ url_for('save_playlist') }}">
+		<fieldset>
+			<legend>Playlist Name</legend>
+			<input type="text" name="playlist" required pattern="^[A-Za-z0-0]+$" placeholder="Playlist Name">
+			 <span class="help-block">Letters and numbers only please.</span>
+			<button type="submit" class="btn">Save Playlist</button>
+		</fieldset>
 	</form>
 
 {% endblock %}

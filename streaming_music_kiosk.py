@@ -105,7 +105,7 @@ def save_playlist():
         return flask.redirect('/stored_playlists')
 
 
-@app.route('/stored_playlists')
+@app.route('/stored_playlists', methods=['GET'])
 def stored_playlists():
     with mpd_client() as client:
         playlists = [playlist['playlist'] for playlist in
@@ -114,7 +114,15 @@ def stored_playlists():
                                      playlists=playlists,
                                      nav="stored_playlists")
 
-        return flask.redirect('/stored_playlists')
+
+@app.route('/stored-playlist/<playlist>', methods=['GET'])
+def stored_playlist(playlist):
+    with mpd_client() as client:
+        songs = client.listplaylistinfo(playlist)
+        from pprint import pprint
+        pprint(songs)
+        return flask.render_template('stored_playlist.html',
+                                     songs=songs, nav="stored_playlist")
 
 
 @app.route('/play-song', methods=['POST'])

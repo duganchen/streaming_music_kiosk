@@ -1,3 +1,4 @@
 python-mpd2
 Flask
+Flask-WTF
 PyYAML

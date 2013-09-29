@@ -12,7 +12,7 @@
 		<li class="nav-header">Stored Playlists</li>
 		<li class="active"><a>Stored Playlist</a></li>
 		{% for playlist in playlists %}
-			<li><a href="#">{{ playlist}}</a></li>
+			<li><a href="{{ url_for('stored_playlist', playlist=playlist) }}">{{ playlist }}</a></li>
 		{% endfor %}
 	</ul>
 

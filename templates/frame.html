@@ -4,34 +4,31 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta charset="utf-8">
 		<title>Streaming Music Kiosk</title>
-		<style>
-			body {
-				padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */ }
-		</style>
-
-		<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+		<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
 	</head>
 
 	<body>
+
 		<div class="navbar navbar-inverse navbar-fixed-top">
-			<div class="navbar-inner">
-				<div class="container">
-					<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<span class="brand">Streaming Music Kiosk</span>
-					<div class="nav-collapse collapse">
-						<ul class="nav">
+					<span class="navbar-brand" href="#">Streaming Music Kiosk</span>
+				</div>
+				<div class="collapse navbar-collapse">
+					<ul class="nav navbar-nav">
 							<li{% if nav == "albums" %} class="active"{% endif %}><a href="{{ url_for('albums')}}">Albums</a></li>
 							<li{% if nav == "playlist" %} class="active"{% endif %}><a href="{{ url_for('playlist') }}">Current Playlist</a></li>
 							<li{% if nav == "stored_playlists" %} class="active"{% endif %}><a href="{{ url_for('stored_playlists') }}">Stored Playlists</a></li>
 
 							<li{% if nav == "stream" %} class="active"{% endif %}><a href="{{ url_for('stream') }}">Stream</a></li>
-						</ul>
-					</div><!--/.nav-collapse -->
-				</div>
+
+					</ul>
+				</div><!--/.nav-collapse -->
 			</div>
 		</div>
 
@@ -40,7 +37,7 @@
 		</div>
 
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
-		<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+		<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/3.0.0/js/bootstrap.min.js"></script>
 
 		{% block javascript %}{% endblock %}
 	</body>

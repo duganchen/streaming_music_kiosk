@@ -2,12 +2,6 @@
 
 {% block container %}
 
-	<ul class="breadcrumb">
-		<li><a href="{{ url_for('playlist') }}">Current Playlist</a> <span class="divider">/</span></li>
-		<li><a href="{{ url_for('choose_song') }}">Choose Song To Play At</a> <span class="divider">/</span></li>
-		<li class="active">Stream</li>
-	</ul>
-
 	<h1>Stream</h1>
 
 	<p>Open Stream: <a href="{{ stream_url }}" target="_blank">{{ stream_url}}</a></p>

@@ -1,10 +1,6 @@
 {% extends "frame.html" %}
 
 {% block container %}
-	<ul class="breadcrumb">
-		<li><a href="{{ url_for('albums') }}">Albums</a> <span class="divider">/</span></li>
-		<li class="active">{{ album }}</li>
-	</ul>
 
 	<h1>{{ album }}</h1>
 	<div class="btn-group">

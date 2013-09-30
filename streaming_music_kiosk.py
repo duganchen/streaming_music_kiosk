@@ -83,7 +83,7 @@ def choose_song():
                                  nav="playlist")
 
 
-@app.route('/edit_edit')
+@app.route('/edit_playlist')
 def edit_playlist():
 
     with mpd_client() as client:
@@ -130,6 +130,13 @@ def remove_playlists():
         for playlist in flask.request.form.getlist('playlists'):
             client.rm(playlist)
         return flask.redirect('/stored_playlists')
+
+
+@app.route('/queue-playlist/<playlist>', methods=['POST'])
+def queue_playlist(playlist):
+    with mpd_client() as client:
+        client.load(playlist)
+    return flask.redirect('/playlist')
 
 
 @app.route('/play-song', methods=['POST'])

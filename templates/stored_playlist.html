@@ -8,10 +8,15 @@
 
 	<h1>{{ playlist }}</h1>
 
-	<ul>
+	<ul class="list-group">
 		{% for song in songs %}
-			<li>{{ song.title }}</li>
+			<li class="list-group-item">{{ song.title }}</li>
 		{% endfor %}
 	</ul>
+
+	<form method="POST" action="{{ url_for('queue_playlist', playlist=playlist) }}">
+		<button type="submit" class="btn">Queue</button>
+	</form>
+
 
 {% endblock %}

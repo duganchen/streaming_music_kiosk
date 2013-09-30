@@ -119,10 +119,17 @@ def stored_playlists():
 def stored_playlist(playlist):
     with mpd_client() as client:
         songs = client.listplaylistinfo(playlist)
-        from pprint import pprint
-        pprint(songs)
         return flask.render_template('stored_playlist.html',
+                                     playlist=playlist,
                                      songs=songs, nav="stored_playlist")
+
+
+@app.route('/remove-playlists', methods=['POST'])
+def remove_playlists():
+    with mpd_client() as client:
+        for playlist in flask.request.form.getlist('playlists'):
+            client.rm(playlist)
+        return flask.redirect('/stored_playlists')
 
 
 @app.route('/play-song', methods=['POST'])

@@ -1,0 +1,17 @@
+{% extends "frame.html" %}
+
+{% block container %}
+
+	<ul class="breadcrumb">
+		<li class="active"><a>Stored Playlists</a></li>
+	</ul>
+
+	<h1>{{ playlist }}</h1>
+
+	<ul>
+		{% for song in songs %}
+			<li>{{ song.title }}</li>
+		{% endfor %}
+	</ul>
+
+{% endblock %}

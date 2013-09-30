@@ -8,10 +8,17 @@
 
 	<h1>Stored Playlists</h1>
 
-	<ul class="list-group">
-		{% for playlist in playlists %}
-			<li class="list-group-item"><a href="{{ url_for('stored_playlist', playlist=playlist) }}">{{ playlist }}</a></li>
-		{% endfor %}
-	</ul>
+	<form method="POST" action="{{ url_for('remove_playlists') }}">
+		<fieldset>
+			{% for playlist in playlists %}
+
+			<label class="checkbox">
+				<input type="checkbox" name="playlists" value="{{ playlist }}"> <a href="{{ url_for('stored_playlist', playlist=playlist) }}">{{ playlist }}</a>
+			</label>
+			{% endfor %}
+			<button type="submit" class="btn">Remove</button>
+		</fieldset>
+	</form>
+
 
 {% endblock %}

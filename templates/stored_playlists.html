@@ -8,11 +8,9 @@
 
 	<h1>Stored Playlists</h1>
 
-	<ul class="nav nav-list">
-		<li class="nav-header">Stored Playlists</li>
-		<li class="active"><a>Stored Playlist</a></li>
+	<ul class="list-group">
 		{% for playlist in playlists %}
-			<li><a href="{{ url_for('stored_playlist', playlist=playlist) }}">{{ playlist }}</a></li>
+			<li class="list-group-item"><a href="{{ url_for('stored_playlist', playlist=playlist) }}">{{ playlist }}</a></li>
 		{% endfor %}
 	</ul>
 
